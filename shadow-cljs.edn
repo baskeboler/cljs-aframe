@@ -1,0 +1,16 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[reagent "0.8.1"]
+  [binaryage/devtools "0.9.10"]]
+ 
+ :nrepl {:port 9999 :middleware []}
+ :builds
+ {:app {:target :browser
+        :modules {:main {:entries [cljs-aframe.app]}}
+        :devtools {:http-port 8080
+                   :http-root "public"}}}}
