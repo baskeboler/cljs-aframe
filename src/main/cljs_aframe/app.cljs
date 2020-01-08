@@ -78,47 +78,53 @@
    {:src "/images/panorama.jpeg"}])
 
 (defn assets []
-  [:a-assets
-   [:a-asset-item {:id "castle"
-                   :src "/models/scene.gltf"}]])
+   [:a-assets
+    [:a-asset-item {:id "castle"
+                    :src "/models/scene.gltf"}]])
 
-(defn video []
-  [:video
-   {:src "http://raspberrypi:8090"
-    :controls true
-    :auto-play true
-    :width "100%"}])
+#_(defn video []
+     [:video
+      {:src "http://raspberrypi:8090"
+       :controls true
+       :auto-play true
+       :width "100%"}])
 
-(defn video-sphere []
-  [:a-videosphere {:src "videos/video.mp4"
-                   :autoplay true
-                   :loop true}])
+#_(defn video-sphere []
+     [:a-videosphere {:src "videos/video.mp4"
+                      :autoplay true
+                      :loop true}])
 
 (defn scene []
   [:a-scene {:stats true}
-   ;; [assets]
+   [assets]
    ;; [painting-panorama]
-    [video-sphere]
-   ])
-   ;; [box]
+   ;; [video-sphere]
+   [box]
    ;; [:a-sun-sky {:material "side: back;"}]
-   ;; [:a-mountain {:color "#222222"}]])
-   ;; [:a-gltf-model {:src "#castle"}]])
+   [:a-mountain {:color "#222222"}]
+   [:a-gltf-model {:src "#castle"}]])
    ;; [sphere]
    ;; [cylinder]
    ;; [plane]
-   ;; [sky]
-   ;; [player]
+   ;; [sky]])
+   ;; [player]])
    
 
 
 
-(defn mount-components []
-  (render
-    [scene]
-    (. js/document (getElementById "root"))))
+(defn mount-components! []
+  (render 
+   [scene]
+   (. js/document (getElementById "root"))))
 
-(defn init! []
-  (mount-components))
+(defn ^:export init! []
+  (mount-components!))
 
-(init!)
+;; (init!)
+
+(defn ^:dev/after-load start-app []
+  (println "start app")
+  (mount-components!))
+
+(defn ^:dev/before-load stop-app []
+  (println "stopping app"))

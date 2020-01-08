@@ -10,7 +10,7 @@
  
  :nrepl {:port 9999 :middleware []}
  :builds
- {:app {:target :browser
-        :modules {:main {:entries [cljs-aframe.app]}}
+ {:app {:target   :browser
+        :modules  {:main {:init-fn cljs-aframe.app/init!}}
         :devtools {:http-port 8080
                    :http-root "public"}}}}
