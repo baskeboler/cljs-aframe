@@ -70,7 +70,7 @@
   [:a-sky {:color "#ECECEC"}])
 
 (defn player []
-  [:a-camera
+  [:a-camera {:position "0 0 -1"}
    [:a-cursor]])
 
 (defn painting-panorama []
@@ -99,15 +99,15 @@
    [assets]
    ;; [painting-panorama]
    ;; [video-sphere]
-   [box]
-   ;; [:a-sun-sky {:material "side: back;"}]
+   ;; [box]
+   [:a-sun-sky {:material "side: back;"}]
    [:a-mountain {:color "#222222"}]
-   [:a-gltf-model {:src "#castle"}]])
+   [:a-gltf-model {:src "#castle"}]
    ;; [sphere]
    ;; [cylinder]
    ;; [plane]
-   ;; [sky]])
-   ;; [player]])
+   ;; [sky]
+   [player]])
    
 
 
